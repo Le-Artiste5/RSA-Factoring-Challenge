@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+from sys import argv
+
+with open(argv[1]) as fd:
+    for line in fd:
+        numb = int(line)
+        print("{:d}=".format(numb), end='')
+        if numb % 2 == 0:
+            print("{}*2".format(numb//2))
+            continue
+        for a in range(3, numb, 2):
+            if numb % a == 0:
+                factor = numb//a
+                for b in range(3, factor, 2):
+                    if factor % b == 0 or b == 0:
+                        break
+                    print("{}*{}".format(factor, a))
+                    break
